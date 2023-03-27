@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+    <div class="global-container">
+        <div class="options">
+            <form id="todo-form" class="add-task">
+                <input id="todo-input" type="text" placeholder="Adicione uma tarefa">
+                <button class="button-option" type="submit"><img src="./assets/add.svg" alt=""></button>
+            </form>
+
+            <div class="search-task">
+                <input id="todo-input" type="search" placeholder="Busque uma tarefa">
+                <button class="button-option"><img src="./assets/search.svg" alt=""></button>
+            </div>
+
+            <div class="filter-task">
+                <select name="select">
+                    <option value="valor1" selected>Todas</option>
+                    <option value="valor2">Feitas</option>
+                    <option value="valor3">A Fazer</option>
+                </select>
+                <img src="./assets/filter.svg" alt="">
+            </div>
+        </div>
+        <div class="tasks-list-container">
+            <h1 class="tasks-list-title">Lista de tarefas</h1>
+            <div id="todo-list" class="tasks-container">
+                    <div class="task">
+                        <h2 class="task-title">
+                            Ir ao mercado
+                        </h2>
+                        <section class="task-options-container">
+                            <button class="button-option"><img class="img-button-option button-done" src="./assets/done.svg" alt=""></button>
+                            <button class="button-option"><img class="img-button-option button-edit" src="./assets/edit.svg" alt=""></button>
+                            <button class="button-option"><img class="img-button-option button-remove" src="./assets/remove.svg" alt=""></button>
+                        </section>
+                    </div>
+            </div>
+        </div>
+
+        <form id="edit-form" class="edit-task-container glass-effect">
+            <div class="edit-task">
+                <h1 class="tasks-list-title">Edite sua tarefa</h1>
+                <input id="edit-input" class="edit-task-input" type="text" placeholder="Título">
+                <p class="edit-task-alert">adicione um título</p>
+                <div class="edit-form-buttons-container">
+                    <button class="button-option" type="submit"><img id="add-edit-btn" class="img-button-option button-edit-done" src="./assets/done.svg" alt=""></button>
+                    <button class="button-option"><img id="cancel-edit-btn" class="img-button-option" src="./assets/remove.svg" alt=""></button>
+                </div> 
+            </div>
+        </form>
+
+        <div id="alert" class="alert-container glass-effect">
+            <div class="alert">
+                <h1>Adicione uma tarefa</h1>
+                <button id="close-alert-btn" class="button-option"><img class="img-button-option" src="./assets/remove.svg" alt=""></button>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="./script.js"></script>
+</html>
