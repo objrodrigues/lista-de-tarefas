@@ -1,6 +1,8 @@
 // Captura de elementos --------------------------------------------------------------------------
 const taskForm = document.querySelector("#task-form")
 const taskInput = document.querySelector("#task-input")
+const taskSearch = document.querySelector("#task-search")
+const taskSearchBtn = document.querySelector("#task-search-btn")
 const tasksList = document.querySelector("#tasks-list")
 const editForm = document.querySelector("#edit-form")
 const editInput = document.querySelector("#edit-input")
@@ -83,6 +85,7 @@ const getFilterSelectedLocalStorage = () => {
 
 // Carregar lista de tarefas filtrada na tela
 const loadFilteredTasksList = (filter) => {
+    tasksList.innerHTML = null
     let filteredTasksList
 
     const loadTasksList = (element) => {
@@ -105,6 +108,14 @@ const loadFilteredTasksList = (filter) => {
         case 'not-done':
             filteredTasksList = getTasksListLocalStorage().filter(task => task.done === false)
             loadTasksList(filteredTasksList)
+            break
+        case 'search':
+            filteredTasksList = getTasksListLocalStorage().filter(task => task.title === taskSearch.value)
+            if (filteredTasksList.length != 0) {
+                loadTasksList(filteredTasksList)
+            } else {
+                loadFilteredTasksList(selectFilterTask.value)
+            }
             break
         default:
     }
@@ -177,12 +188,24 @@ taskForm.addEventListener(
     }
 )
 
+// Buscar tarefas
+taskSearchBtn.addEventListener(
+    "click",
+    (event) => {
+        event.preventDefault()
+
+        if (taskSearch.value) {
+            loadFilteredTasksList("search")
+        }
+        taskSearch.value = ""
+    }
+)
+
 // Filtrar tarefas
 selectFilterTask.addEventListener(
     "change",
     (event) => {
         event.preventDefault()
-        tasksList.innerHTML = null
         localStorage.setItem("filter-task-selected", selectFilterTask.value)
 
         switch (getFilterSelectedLocalStorage()) {
