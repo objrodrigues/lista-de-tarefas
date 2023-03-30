@@ -54,7 +54,7 @@ input, select {
     border: solid 1px lightgray;
     border-radius: 16px;
     font-size: 1rem;
-    min-width: 100px;
+    min-width: 160px;
 }
 
 .filter-task option {
